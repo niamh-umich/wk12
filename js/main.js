@@ -45,3 +45,18 @@ function showAll() {
         allDivs[i].style.display = "inline-block";
     }
 }
+document.querySelectorAll(".character").forEach(card => {
+    const img = card.querySelector("img");
+    const name = img.alt;
+    const src = img.src;
+
+    const group = card.classList.contains("human") ? "humans" : "aliens";
+
+    const link = document.createElement("a");
+    link.href = src;
+    link.setAttribute("data-lightbox", group);
+    link.setAttribute("data-title", name);
+
+    img.replaceWith(link);
+    link.appendChild(img);
+});
